@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Enumerable
   # module that defines common enumerable methods
   def my_each
