@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-
 module Enumerable
+  # module that defines common enumerable methods
   def my_each
     (0...length).each do |i|
       yield(self[i])
@@ -84,14 +84,12 @@ print "\n"
 #=> 0: 4  1: 5  2: 8  3: 20
 
 # *** test for my_select ***
-result = [2, 8, 4, 9, 5, 7, 4].my_select { |value| value > 5 }
-print result.to_s
+print [2, 8, 4, 9, 5, 7, 4].my_select { |value| value > 5 }
 print "\n"
 #=> [8, 9, 7]
 
 # *** test for my_all ***
-result = [4, 6, 1, 8].my_all? { |val| val > 1 }
-print result
+print [4, 6, 1, 8].my_all? { |val| val > 1 }
 print "\n"
 #=> false
 
@@ -102,14 +100,12 @@ print "\n"
 #=> false
 
 # *** test for my_none ***
-result = [4, 6, 1, 8].my_none? { |val| val < 1 }
-print result
+print [4, 6, 1, 8].my_none? { |val| val < 1 }
 print "\n"
 #=> true
 
 # *** test for my_count ***
-result = [4, 6, 1, 8].my_count
-print result
+print [4, 6, 1, 8].my_count
 print "\n"
 #=> 4
 
