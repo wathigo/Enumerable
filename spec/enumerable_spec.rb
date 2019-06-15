@@ -7,6 +7,7 @@ describe Enumerable do
   let (:items1) {[0, 5, 7, 9]}
   let (:items2) {['thin', 'den']}
   let (:result) {[]}
+  item = ->(val) { val > 5 }
   describe '#my each' do
     context "When a block is not given" do
       it "Returns an enumerable object" do
@@ -48,7 +49,7 @@ describe Enumerable do
     context "When a block is given" do
       it "Returns an array of elements containing the items that \
           returns true when passed as a parameter to the block" do
-         expect(items1.my_select {|value| value > 5}).to eql([7, 9])
+         expect(items1.my_select(&item)).to eql([7, 9])
       end
     end
   end
@@ -63,7 +64,7 @@ describe Enumerable do
 
     context "When a block is given" do
       it "Returns false if the block return false or nil" do
-        expect(items1.my_all? {|value| value > 5}).to eql(false)
+        expect(items1.my_all?(&item)).to eql(false)
       end
       it "Returns true if a block never returns false or nil" do
         expect(items1.my_all? {|value| value.is_a? Integer}).to eql(true)
@@ -80,7 +81,7 @@ describe Enumerable do
 
     context "Whan a block is given" do
       it "Returns true if the block ever returns a value other than alse or nil" do
-        expect(items1.my_any? {|value| value > 5}).to eql(true)
+        expect(items1.my_any?(&item)).to eql(true)
       end
     end
   end
@@ -101,7 +102,7 @@ describe Enumerable do
         expect(items1.my_none? {|value| value.is_a? String}).to eql(true)
       end
       it "Returns false if a block ever returns true" do
-        expect(items1.my_none? {|value| value > 5}).to eql(false)
+        expect(items1.my_none?(&item)).to eql(false)
       end
     end
   end
@@ -114,7 +115,6 @@ describe Enumerable do
 
   describe "#my_map" do
     it "Returns an array containing boolean values returned by the block" do
-      item = ->(val) { val > 5 }
       expect(items1.my_map(&item)).to eql([false, false, true, true])
     end
   end
