@@ -55,7 +55,7 @@ describe Enumerable do
 
   describe "#my_all?" do
     context "When a block is not given" do
-      it "Returns false if one of the object elements is false or true" do
+      it "Returns false if one of the object elements is false or nil" do
         items2.push(false)
         expect(items2.my_all?).to eql(false)
       end
