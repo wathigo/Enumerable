@@ -70,6 +70,7 @@ module Enumerable
 
   def my_none?
     return true if self == []
+
     if block_given?
       (0...length).each do |i|
         truth = yield(self[i])
