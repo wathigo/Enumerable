@@ -29,7 +29,7 @@ describe Enumerable do
       end
     end
 
-    context 'When a block is not given' do
+    context 'When a block is given' do
       it "Executes the block give on every item in the specific index \
           of the iteratable" do
         result = []
