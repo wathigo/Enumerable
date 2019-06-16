@@ -37,6 +37,7 @@ module Enumerable
 
   def my_all?
     return true if self == []
+
     truth = true
     if block_given?
       (0...length).each do |i|
@@ -45,9 +46,7 @@ module Enumerable
       end
     else
       (0...length).each do |i|
-        if self[i] == nil || self[i] == false
-          return false
-        end
+        return false if self[i].nil? || self[i] == false
       end
       return true
     end
@@ -63,9 +62,7 @@ module Enumerable
       end
     else
       (0...length).each do |i|
-        if self[i] != nil && self[i] != false
-          return true
-        end
+        return true if !self[i].nil? && self[i] != false
       end
     end
     truth
@@ -80,9 +77,7 @@ module Enumerable
       end
     else
       (0...length).each do |i|
-        if self[i] != false && self[i] != nil
-          return false
-        end
+        return false if self[i] != false && !self[i].nil?
       end
     end
     true
