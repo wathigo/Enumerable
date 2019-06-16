@@ -14,5 +14,10 @@ A simple program that define a Enumerable module defining the common enumerable 
 3. Open the file `main.rb` to edit the program.
 4. Run the command `ruby main.rb` to run the program.
 
+## Running tests
+1. Clone the repository.
+2. Navigate to root folder of the cloned repository.
+3. Enter `rspec` command to run the tests.
+
 ## Contributor(s)
 1. [Simon Wathigo](https://github.com/wathigo).
