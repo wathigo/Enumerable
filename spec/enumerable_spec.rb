@@ -94,8 +94,8 @@ describe Enumerable do
   describe '#my_none?' do
     let(:lie) { [nil, false] }
     context 'When a block is not given' do
-      it "Returns false if one or more elements in the iteratable \
-          is true" do
+      it "Returns false if one or more elements in the \
+          iteratable is true" do
         expect(items2.my_none?).to eql(false)
       end
       it 'Returns true if none of the iteratable elements is true' do
@@ -126,7 +126,7 @@ describe Enumerable do
   end
 
   describe '#my_inject' do
-    let (:items3) { [1, 4, 6] }
+    let(:items3) { [1, 4, 6] }
     it 'Returns the product of the individual values in an array' do
       prod = multiply_els(items3)
       expect(prod).to eql(24)
