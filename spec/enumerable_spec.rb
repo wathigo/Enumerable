@@ -3,9 +3,9 @@
 require File.expand_path('./main')
 
 describe Enumerable do
-  let (:items1) { [0, 5, 7, 9] }
-  let (:items2) { %w[thin den] }
-  let (:result) { [] }
+  let(:items1) { [0, 5, 7, 9] }
+  let(:items2) { %w[thin den] }
+  let(:result) { [] }
   item = ->(val) { val > 5 }
   describe '#my each' do
     context 'When a block is not given' do
@@ -16,7 +16,7 @@ describe Enumerable do
 
     context 'When a block is given' do
       it 'Executes the block for each of the iteratable items' do
-        items2.my_each { |item| result.push(item) }
+        items2.my_each { |value| result.push(value) }
         expect(result).to eql(items2)
       end
     end
@@ -30,9 +30,11 @@ describe Enumerable do
     end
 
     context 'When a block is not given' do
-      it 'Executes the block give on every item in the specific index of the iteratable' do
+      it "Executes the block give on every item in the specific index \
+          of the iteratable" do
         result = []
-        items2.my_each_with_index { |item, index| result.push("#{item}: #{index}") }
+        items2.my_each_with_index { |value, index| result.push("#{value}:\
+           #{index}") }
         expect(result).to eql(['thin: 0', 'den: 1'])
       end
     end
@@ -73,22 +75,25 @@ describe Enumerable do
 
   describe '#my_any?' do
     context 'When a block is not given' do
-      it 'Returns true if one or more of the values in the iteratable is not false or nil' do
+      it "Returns true if one or more of the values in the iteratable \
+          is not false or nil" do
         expect(items2.my_any?).to eql(true)
       end
     end
 
     context 'Whan a block is given' do
-      it 'Returns true if the block ever returns a value other than alse or nil' do
+      it "Returns true if the block ever returns a value other than \
+          alse or nil" do
         expect(items1.my_any?(&item)).to eql(true)
       end
     end
   end
 
   describe '#my_none?' do
-    let (:lie) { [nil, false] }
+    let(:lie) { [nil, false] }
     context 'When a block is not given' do
-      it 'Returns false if one or more elements in the iteratable is true' do
+      it "Returns false if one or more elements in the iteratable \
+          is true" do
         expect(items2.my_none?).to eql(false)
       end
       it 'Returns true if none of the iteratable elements is true' do
