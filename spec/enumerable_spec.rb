@@ -34,8 +34,7 @@ describe Enumerable do
           of the iteratable" do
         result = []
         items2.my_each_with_index do |value, index|
-          result.push("#{value}:\
-           #{index}")
+          result.push("#{value}: #{index}")
         end
         expect(result).to eql(['thin: 0', 'den: 1'])
       end
